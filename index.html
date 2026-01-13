@@ -1,395 +1,192 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Le cas FOAMTECH – Sketch de vente</title>
-<style>
-  :root{
-    --bg:#ffffff;
-    --surface:#ffffff;
-    --ink:#0f172a;
-    --muted:#475569;
-    --line:#e2e8f0;
-    --shadow: 0 8px 30px rgba(2,6,23,.08);
-    --radius:16px;
-    --d:#2563eb;
-    --m:#0f766e;
-    --accent:#0ea5e9;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--ink);}
-  a{color:inherit}
-  .wrap{max-width:1100px;margin:0 auto;padding:24px}
-  .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
-  .topbar-inner{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:center;padding:14px 24px}
-  .brand{display:flex;flex-direction:column;gap:2px;min-width:240px}
-  .brand .t{font-weight:800;letter-spacing:-.02em}
-  .brand .s{font-size:13px;color:var(--muted)}
-  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-end;flex:1}
-  .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);padding:9px 12px;border-radius:999px;box-shadow:0 1px 0 rgba(2,6,23,.02)}
-  .pill input{border:none;outline:none;font-size:14px;min-width:220px}
-  .btn{border:1px solid var(--line);background:var(--surface);padding:9px 12px;border-radius:999px;cursor:pointer;font-weight:650}
-  .btn:hover{border-color:#cbd5e1}
-  .btn.active{border-color:#93c5fd;background:#eff6ff}
-  .hero{padding:22px 0 8px}
-  h1{margin:0;font-size:34px;letter-spacing:-.03em}
-  .subtitle{margin-top:6px;color:var(--muted);font-size:16px}
-  .grid{display:grid;grid-template-columns: 1.1fr .9fr;gap:18px;margin-top:18px}
-  @media (max-width: 920px){.grid{grid-template-columns:1fr} .brand{min-width:auto} .pill input{min-width:140px}}
-  .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-  .panel .ph{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .panel .ph h2{margin:0;font-size:16px}
-  .panel .pb{padding:16px 18px}
-  .meta{display:flex;flex-wrap:wrap;gap:10px}
-  .tag{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:6px 10px;border-radius:999px;background:#f8fafc}
-  .callout{border-left:4px solid var(--accent);background:#f0f9ff;border:1px solid #bae6fd;border-left-width:4px;border-radius:14px;padding:12px 14px;color:#0c4a6e;line-height:1.45}
-  .dialogue{margin-top:18px}
-  .stack{display:flex;flex-direction:column;gap:12px}
-  .card{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--surface);box-shadow:0 10px 22px rgba(2,6,23,.04)}
-  .card-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-  .badge{font-weight:800;font-size:12px;letter-spacing:.02em;border-radius:999px;padding:6px 10px;border:1px solid var(--line);background:#f8fafc}
-  .who{font-weight:750;font-size:13px;color:var(--muted)}
-  .card-body{line-height:1.55}
-  .rep-d .badge{border-color:#bfdbfe;background:#eff6ff;color:#1e40af}
-  .rep-m .badge{border-color:#99f6e4;background:#ecfdf5;color:#065f46}
-  .rep-d{border-left:4px solid var(--d)}
-  .rep-m{border-left:4px solid var(--m)}
-  .footer{margin:26px 0 8px;color:var(--muted);font-size:12px}
-  .hidden{display:none !important}
-  @media print {
-    .topbar{display:none}
-    body{background:#fff}
-    .panel, .card{box-shadow:none}
-    .wrap{padding:0}
-    a[href]:after{content:""}
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Le cas FOAMTECH – Sketch de vente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --secondary: #e6f1fb;
+      --border: #dbe7f3;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+
+    /* Contexte */
+    .context-box {
+      background: var(--secondary);
+      border-left: 5px solid var(--primary);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    /* Dialogue */
+    .dialogue { margin-top: 24px; }
+
+    .line {
+      margin-bottom: 14px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      max-width: 85%;
+    }
+
+    .delegue {
+      background: #f0f7ff;
+      border-left: 4px solid var(--primary);
+    }
+
+    .medecin {
+      background: #f9fafb;
+      border-left: 4px solid #9ca3af;
+      margin-left: auto;
+    }
+
+    .label {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* Analyse */
+    .analysis {
+      background: #f9fafb;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 60px;
+    }
+
+    @media print {
+      .card { page-break-inside: avoid; }
+    }
+  </style>
 </head>
+
 <body>
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <div class="t">Le cas FOAMTECH</div>
-        <div class="s">Visite d’un délégué médical à un médecin généraliste</div>
-      </div>
-      <div class="controls">
-        <div class="pill" title="Rechercher dans le dialogue">
-          🔎 <input id="q" type="search" placeholder="Rechercher (ex. prix, infirmière, essai…)" aria-label="Rechercher"/>
-        </div>
-        <button class="btn active" id="fAll" data-filter="ALL">Tout</button>
-        <button class="btn" id="fD" data-filter="D">Délégué</button>
-        <button class="btn" id="fM" data-filter="M">Médecin</button>
-        <button class="btn" id="printBtn">Imprimer</button>
-      </div>
+<div class="container">
+
+  <h1>Le cas FOAMTECH</h1>
+  <div class="subtitle">
+    Visite d’un délégué médical à un médecin généraliste
+  </div>
+
+  <!-- CONTEXTE -->
+  <div class="card">
+    <h2>Contexte</h2>
+    <div class="context-box">
+      Le délégué médical, <strong>Julien DELCAMP</strong>, rend visite au
+      <strong>Dr LEMOINE</strong>, généraliste. Il a ciblé ce MG car dans son CRM
+      il a vu que son potentiel est intéressant et qu’il ne l’a pas vu depuis 2 ans.
+      Il va donc lui présenter une nouvelle gamme de pansements mousse à technologie
+      micro-adaptative spécialement conçue pour les plaies complexes (ulcères, escarres…).
+      <br><br>
+      Le rendez-vous a été difficile à obtenir : au téléphone, le médecin a dit
+      « sauf si vous avez un produit vraiment efficace pour les plaies diabétiques,
+      je n’ai pas de temps à perdre ».
+      <br><br>
+      Julien a avec lui des échantillons et des études cliniques récentes. Il a chargé
+      son iPad et l’a ouvert sur la présentation du nouveau produit :
+      <strong>FOAMTECH Adapt</strong>.
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="hero">
-      <h1>Le cas FOAMTECH</h1>
-      <div class="subtitle">Visite d’un délégué médical à un médecin généraliste</div>
+  <!-- DIALOGUE -->
+  <div class="card">
+    <h2>Déroulé de l’entretien</h2>
+    <div class="dialogue">
+
+      <div class="line delegue"><div class="label">D1 – Délégué</div>Bonjour Docteur LEMOINE, Julien DELCAMP, de chez FOAMTECH. Merci de me recevoir !</div>
+      <div class="line medecin"><div class="label">M2 – Médecin</div>Bonjour… oui, entrez, j’ai quelques minutes.</div>
+      <div class="line delegue"><div class="label">D3 – Délégué</div>Merci, je sais que votre agenda est bien chargé, surtout avec les patients chroniques.</div>
+      <div class="line medecin"><div class="label">M4 – Médecin</div>Vous ne croyez pas si bien dire… J’ai une dizaine de diabétiques avec des plaies qui ne cicatrisent pas.</div>
+      <div class="line delegue"><div class="label">D5 – Délégué</div>Justement, c’est pour cela que je tenais à vous revoir. On a développé un pansement innovant pour ces cas complexes. Puis-je vous le présenter en 5 minutes ?</div>
+      <div class="line medecin"><div class="label">M6 – Médecin</div>Allez-y, j’ai 10 minutes.</div>
+      <div class="line delegue"><div class="label">D7 – Délégué</div>FOAMTECH a toujours investi en R&D. Cette nouvelle gamme, FOAMTECH Adapt, repose sur une technologie micro-adaptative.</div>
+      <div class="line medecin"><div class="label">M8 – Médecin</div>Vous avez un échantillon ?</div>
+      <div class="line delegue"><div class="label">D9 – Délégué</div>Bien sûr. Vous voyez cette souplesse ? Elle absorbe l’exsudat tout en maintenant un environnement humide optimal.</div>
+      <div class="line medecin"><div class="label">M10 – Médecin</div>La texture est pas mal.</div>
+      <div class="line delegue"><div class="label">D11 – Délégué</div>Des études sur 120 patients diabétiques montrent une réduction du temps de cicatrisation de 30 %.</div>
+      <div class="line medecin"><div class="label">M12 – Médecin</div>Mais ça doit coûter plus cher…</div>
+      <div class="line delegue"><div class="label">D13 – Délégué</div>Environ 15 % de plus, mais avec moins de changes, le coût global baisse.</div>
+      <div class="line medecin"><div class="label">M14 – Médecin</div>Je suis sceptique. Les infirmières n’aiment pas sortir du protocole.</div>
+      <div class="line delegue"><div class="label">D15 – Délégué</div>Justement, cela peut éviter des infections ou hospitalisations coûteuses.</div>
+      <div class="line medecin"><div class="label">M16 – Médecin</div>Je dois convaincre patients, IDE et parfois le pharmacien.</div>
+      <div class="line delegue"><div class="label">D17 – Délégué</div>Et si on testait ensemble sur 2 ou 3 cas complexes ?</div>
+      <div class="line medecin"><div class="label">M18 – Médecin</div>Pourquoi pas. J’ai une patiente avec un ulcère plantaire.</div>
+      <div class="line delegue"><div class="label">D19 – Délégué</div>Je vous laisse un kit test et une fiche pour l’infirmière.</div>
+      <div class="line medecin"><div class="label">M20 – Médecin</div>Si ça ne montre rien, je ne renouvellerai pas.</div>
+      <div class="line delegue"><div class="label">D21 – Délégué</div>Parfait, faisons un point dans 10 jours.</div>
+      <div class="line medecin"><div class="label">M22 – Médecin</div>Laissez-moi le kit.</div>
+      <div class="line delegue"><div class="label">D23 – Délégué</div>Je vous envoie les données cliniques.</div>
+      <div class="line medecin"><div class="label">M24 – Médecin</div>Très bien, au revoir.</div>
+      <div class="line delegue"><div class="label">D25 – Délégué</div>Merci Docteur, à bientôt.</div>
+
     </div>
-
-    <div class="grid">
-      <section class="panel">
-        <div class="ph">
-          <h2>Contexte</h2>
-          <div class="meta">
-            <span class="tag">Sketch de vente</span>
-            <span class="tag">Visite médicale</span>
-            <span class="tag">Objections</span>
-          </div>
-        </div>
-        <div class="pb">
-          <div class="callout">Le délégué médical, Julien DELCAMP, rend visite au Dr LEMOINE, généraliste. Il a ciblé ce MG car dans son CRM il a vu que son potentiel est intéressant et qu’il ne l’a pas vu depuis 2 ans. Il va donc lui présenter une nouvelle gamme de pansements mousse à technologie micro-adaptative spécialement conçue pour les plaies complexes (ulcères, escarres...). Le rendez-vous a été difficile à obtenir : au téléphone, le médecin a dit « sauf si vous avez un produit vraiment efficace pour les plaies diabétiques, je n’ai pas de temps à perdre ». Julien a avec lui des échantillons et des études cliniques récentes, il a chargé son Ipad et l’a ouvert sur la présentation du nouveau produit, FOAMTECH Adapt.</div>
-        </div>
-      </section>
-    <section class="panel dialogue">
-      <div class="ph">
-        <h2>Dialogue</h2>
-        <div class="meta">
-          <span class="tag">25 répliques</span>
-          <span class="tag">Filtrable & recherchable</span>
-        </div>
-      </div>
-      <div class="pb">
-        <div class="stack" id="cards">
-          
-    <div class="card rep rep-d" data-speaker="D" data-badge="D1" data-text="bonjour docteur lemoine, julien delcamp, de chez foamtech. merci de me recevoir !">
-      <div class="card-head">
-        <span class="badge">D1</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Bonjour Docteur LEMOINE, Julien DELCAMP, de chez FOAMTECH. Merci de me recevoir !</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M2" data-text="bonjour… oui, entrez, j’ai quelques minutes.">
-      <div class="card-head">
-        <span class="badge">M2</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">Bonjour… oui, entrez, j’ai quelques minutes.</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D3" data-text="merci, je sais que votre agenda est bien chargé, surtout avec les patients chroniques qui demandent un vrai suivi au quotidien.">
-      <div class="card-head">
-        <span class="badge">D3</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Merci, je sais que votre agenda est bien chargé, surtout avec les patients chroniques qui demandent un vrai suivi au quotidien.</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M4" data-text="vous ne croyez pas si bien dire… j’ai une dizaine de diabétiques avec des plaies qui ne cicatrisent pas. c’est une vraie galère.">
-      <div class="card-head">
-        <span class="badge">M4</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">Vous ne croyez pas si bien dire… J’ai une dizaine de diabétiques avec des plaies qui ne cicatrisent pas. C’est une vraie galère.</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D5" data-text="justement, c’est pour cela que je tenais à vous revoir. on a développé chez foamtech un pansement innovant pensé pour ces cas complexes, notamment les ulcères chez les patients diabétiques. est-ce que je peux vous présenter cela en 5 minutes ?">
-      <div class="card-head">
-        <span class="badge">D5</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Justement, c’est pour cela que je tenais à vous revoir. On a développé chez FOAMTECH un pansement innovant pensé pour ces cas complexes, notamment les ulcères chez les patients diabétiques. Est-ce que je peux vous présenter cela en 5 minutes ?</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M6" data-text="allez-y, j’ai 10 minutes avant mon prochain patient.">
-      <div class="card-head">
-        <span class="badge">M6</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">Allez-y, j’ai 10 minutes avant mon prochain patient.</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D7" data-text="parfait, merci dr ! foamtech a toujours investi en r&amp;d pour proposer des solutions plus efficaces. (julien présente son ipad au dr lemoine) cette nouvelle gamme, la foamtech adapt, repose sur une technologie micro-adaptative, inspirée des polymères bioactifs. résultat : le pansement épouse parfaitement les reliefs de la plaie et régule l&#x27;humidité en continu.">
-      <div class="card-head">
-        <span class="badge">D7</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Parfait, merci Dr ! FOAMTECH a toujours investi en R&amp;D pour proposer des solutions plus efficaces. (Julien présente son Ipad au Dr LEMOINE) Cette nouvelle gamme, la FOAMTECH Adapt, repose sur une technologie micro-adaptative, inspirée des polymères bioactifs. Résultat : le pansement épouse parfaitement les reliefs de la plaie et régule l&#x27;humidité en continu.</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M8" data-text="vous avez un échantillon que je vois à quoi cela ressemble ?">
-      <div class="card-head">
-        <span class="badge">M8</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">Vous avez un échantillon que je vois à quoi cela ressemble ?</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D9" data-text="bien sûr. tenez, vous pouvez le manipuler. vous voyez cette souplesse ? et cette couche interne : elle absorbe l’exsudat tout en maintenant un environnement humide optimal.">
-      <div class="card-head">
-        <span class="badge">D9</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Bien sûr. Tenez, vous pouvez le manipuler. Vous voyez cette souplesse ? Et cette couche interne : elle absorbe l’exsudat tout en maintenant un environnement humide optimal.</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M10" data-text="la texture est pas mal. on dirait que ça tient bien !">
-      <div class="card-head">
-        <span class="badge">M10</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">La texture est pas mal. On dirait que ça tient bien !</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D11" data-text="exactement. et surtout, des études cliniques menées sur 120 patients diabétiques ont montré une réduction du temps de cicatrisation de 30% par rapport aux pansements qui existent aujourd’hui sur le marché. deux centres de soin des plaies à bordeaux et nancy l’utilisent déjà régulièrement et sont extrêmement satisfaits des résultats.">
-      <div class="card-head">
-        <span class="badge">D11</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Exactement. Et surtout, des études cliniques menées sur 120 patients diabétiques ont montré une réduction du temps de cicatrisation de 30% par rapport aux pansements qui existent aujourd’hui sur le marché. Deux centres de soin des plaies à Bordeaux et Nancy l’utilisent déjà régulièrement et sont extrêmement satisfaits des résultats.</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M12" data-text="vous me dites que ça guérit mieux, mais ça doit coûter plus cher, non ?">
-      <div class="card-head">
-        <span class="badge">M12</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">Vous me dites que ça guérit mieux, mais ça doit coûter plus cher, non ?</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D13" data-text="oui, environ 15% plus cher qu’un pansement mousse standard. mais les retours montrent qu’on réduit le nombre de changes, donc le coût total du soin baisse sur le long terme.">
-      <div class="card-head">
-        <span class="badge">D13</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Oui, environ 15% plus cher qu’un pansement mousse standard. Mais les retours montrent qu’on réduit le nombre de changes, donc le coût total du soin baisse sur le long terme.</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M14" data-text="là je suis sceptique ! nous sommes contraints avec des budgets serrés, et en plus les infirmières libérales râlent quand un pansement sort du protocole habituel.">
-      <div class="card-head">
-        <span class="badge">M14</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">Là je suis sceptique ! Nous sommes contraints avec des budgets serrés, et en plus les infirmières libérales râlent quand un pansement sort du protocole habituel.</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D15" data-text="je comprends. mais ici on parle d’un produit qui peut éviter une évolution vers des infections graves ou des hospitalisations, ce qui coûte bien plus cher au système et au patient, et est probablement une préoccupation des infirmières qui travaillent avec vous !">
-      <div class="card-head">
-        <span class="badge">D15</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Je comprends. Mais ici on parle d’un produit qui peut éviter une évolution vers des infections graves ou des hospitalisations, ce qui coûte bien plus cher au système et au patient, et est probablement une préoccupation des infirmières qui travaillent avec vous !</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M16" data-text="peut-être, mais moi je dois convaincre mes patients, mes ide, et parfois en plus le pharmacien...">
-      <div class="card-head">
-        <span class="badge">M16</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">Peut-être, mais moi je dois convaincre mes patients, mes IDE, et parfois en plus le pharmacien...</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D17" data-text="et si on testait ensemble ? un essai sur 2 ou 3 cas complexes, sans modifier votre pratique habituelle, juste pour vous permettre de voir et de mesurer l’efficacité réelle ?">
-      <div class="card-head">
-        <span class="badge">D17</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Et si on testait ensemble ? Un essai sur 2 ou 3 cas complexes, sans modifier votre pratique habituelle, juste pour vous permettre de voir et de mesurer l’efficacité réelle ?</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M18" data-text="oui … pourquoi pas …  j’ai justement une patiente avec un ulcère plantaire qui stagne depuis 3 mois. on pourrait essayer sur elle. mais je dois prévenir l’infirmière.">
-      <div class="card-head">
-        <span class="badge">M18</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">Oui … pourquoi pas …  J’ai justement une patiente avec un ulcère plantaire qui stagne depuis 3 mois. On pourrait essayer sur elle. Mais je dois prévenir l’infirmière.</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D19" data-text="bien sûr. je peux vous laisser un kit test avec 3 formats différents. je vous laisse aussi une fiche résumé pour l’infirmière, et je peux même l’appeler si vous préférez.">
-      <div class="card-head">
-        <span class="badge">D19</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Bien sûr. Je peux vous laisser un kit test avec 3 formats différents. Je vous laisse aussi une fiche résumé pour l’infirmière, et je peux même l’appeler si vous préférez.</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M20" data-text="d’accord. mais si ça ne montre pas une vraie différence, je ne renouvellerai pas.">
-      <div class="card-head">
-        <span class="badge">M20</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">D’accord. Mais si ça ne montre pas une vraie différence, je ne renouvellerai pas.</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D21" data-text="c’est tout à fait légitime. je vous propose de faire un point dans 10 jours, après les premiers retours. je vais également vous envoyer les données cliniques complètes par mail, votre adresse est toujours dlemoine@orange.fr ?">
-      <div class="card-head">
-        <span class="badge">D21</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">C’est tout à fait légitime. Je vous propose de faire un point dans 10 jours, après les premiers retours. Je vais également vous envoyer les données cliniques complètes par mail, votre adresse est toujours dlemoine@orange.fr ?</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M22" data-text="d’accord. laissez-moi le kit et la fiche. on verra bien.">
-      <div class="card-head">
-        <span class="badge">M22</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">D’accord. Laissez-moi le kit et la fiche. On verra bien.</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D23" data-text="parfait. voici le kit, je vous note tout ça par mail, et je vous appelle la semaine prochaine.">
-      <div class="card-head">
-        <span class="badge">D23</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Parfait. Voici le kit, je vous note tout ça par mail, et je vous appelle la semaine prochaine.</div>
-    </div>
-    
-
-    <div class="card rep rep-m" data-speaker="M" data-badge="M24" data-text="très bien. merci, au revoir !">
-      <div class="card-head">
-        <span class="badge">M24</span>
-        <span class="who">Médecin</span>
-      </div>
-      <div class="card-body">Très bien. Merci, au revoir !</div>
-    </div>
-    
-
-    <div class="card rep rep-d" data-speaker="D" data-badge="D25" data-text="merci à vous, docteur lemoine,  à bientôt.">
-      <div class="card-head">
-        <span class="badge">D25</span>
-        <span class="who">Délégué</span>
-      </div>
-      <div class="card-body">Merci à vous, Docteur LEMOINE,  À bientôt.</div>
-    </div>
-    
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" style="margin-top:18px">
-      <div class="ph"><h2>Analyse de la visite</h2></div>
-      <div class="pb" style="line-height:1.6">
-        Julien est plutôt satisfait de sa visite. Il n’avait pas vu ce généraliste depuis 2 ans et il va enfin démarrer quelque chose avec lui grâce à ce nouveau produit FOAMTECH Adapt. Toutefois, ce n’est pas gagné, faire prescrire un produit 15% + cher c’est bien, mais il faudrait vraiment que FOAMTECH baisse le prix pour garantir une utilisation récurrente, d’ailleurs Julien n’arrête pas de le dire au chef de produit !
-      </div>
-    </section>
-
-    <div class="footer">Généré le 13/01/2026.</div>
   </div>
 
-<script>
-(function(){
-  const q = document.getElementById('q');
-  const cards = Array.from(document.querySelectorAll('#cards .card'));
-  const btnAll = document.getElementById('fAll');
-  const btnD = document.getElementById('fD');
-  const btnM = document.getElementById('fM');
-  const printBtn = document.getElementById('printBtn');
+  <!-- ANALYSE -->
+  <div class="card">
+    <h2>Analyse de la visite</h2>
+    <div class="analysis">
+      Julien est satisfait : il relance une relation inactive depuis 2 ans grâce à
+      FOAMTECH Adapt. Le test terrain est enclenché, mais le prix reste un frein
+      potentiel pour une adoption durable.
+    </div>
+  </div>
 
-  let speakerFilter = 'ALL';
+  <footer>
+    Document pédagogique – Formation commerciale
+  </footer>
 
-  function setActive(btn) {
-    [btnAll, btnD, btnM].forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-
-  function apply() {
-    const term = (q.value || '').trim().toLowerCase();
-    cards.forEach(card => {
-      const sp = card.getAttribute('data-speaker');
-      const text = card.getAttribute('data-text') || '';
-      const badge = (card.getAttribute('data-badge') || '').toLowerCase();
-      const matchSpeaker = (speakerFilter === 'ALL') || (sp === speakerFilter);
-      const matchTerm = !term || text.includes(term) || badge.includes(term);
-      card.classList.toggle('hidden', !(matchSpeaker && matchTerm));
-    });
-  }
-
-  btnAll.addEventListener('click', () => { speakerFilter='ALL'; setActive(btnAll); apply(); });
-  btnD.addEventListener('click', () => { speakerFilter='D'; setActive(btnD); apply(); });
-  btnM.addEventListener('click', () => { speakerFilter='M'; setActive(btnM); apply(); });
-  q.addEventListener('input', apply);
-  printBtn.addEventListener('click', () => window.print());
-
-  apply();
-})();
-</script>
+</div>
 </body>
 </html>
