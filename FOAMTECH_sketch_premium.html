@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Le cas FOAMTECH — Visite d’un délégué médical à un médecin généraliste</title>
+  <meta name="description" content="Mise en forme premium d'un sketch de vente (cas FOAMTECH) pour animation pédagogique." />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --faint: rgba(255,255,255,.55);
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 18px 55px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+      --d: #7dd3fc;
+      --m: #a7f3d0;
+      --accent: #c4b5fd;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f7fb;
+        --card: rgba(15,23,42,.05);
+        --card2: rgba(15,23,42,.07);
+        --text: rgba(15,23,42,.92);
+        --muted: rgba(15,23,42,.75);
+        --faint: rgba(15,23,42,.55);
+        --border: rgba(15,23,42,.10);
+        --shadow: 0 18px 55px rgba(15,23,42,.12);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 12% 8%, rgba(196,181,253,.30), transparent 60%),
+        radial-gradient(900px 650px at 80% 12%, rgba(125,211,252,.22), transparent 55%),
+        radial-gradient(1000px 700px at 50% 90%, rgba(167,243,208,.18), transparent 60%),
+        var(--bg);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 18px 80px; }
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(0,0,0,.28), rgba(0,0,0,0));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    @media (prefers-color-scheme: light) {
+      .topbar { background: linear-gradient(to bottom, rgba(246,247,251,.85), rgba(246,247,251,0)); border-bottom: 1px solid var(--border); }
+    }
+    .topbar .inner { max-width: var(--max); margin: 0 auto; padding: 10px 18px; display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+    .brand {
+      display: flex; align-items: center; gap: 10px; min-width: 200px;
+      font-weight: 650; letter-spacing: .2px;
+    }
+    .dot {
+      width: 12px; height: 12px; border-radius: 999px;
+      background: conic-gradient(from 90deg, var(--d), var(--accent), var(--m), var(--d));
+      box-shadow: 0 0 0 6px rgba(255,255,255,.06);
+    }
+    .actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,.10);
+      color: var(--text);
+      font-size: 13px;
+    }
+    .pill input {
+      border: 0; outline: none; background: transparent; color: var(--text);
+      width: min(260px, 46vw);
+      font-size: 13px;
+    }
+    .btn {
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      user-select: none;
+    }
+    .btn:hover { background: rgba(255,255,255,.08); }
+    .btn:active { transform: translateY(1px); }
+    .btn.active { border-color: rgba(196,181,253,.45); background: rgba(196,181,253,.12); }
+    header.hero {
+      padding: 26px 0 18px;
+    }
+    .hero-card {
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 22px 18px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-card:before {
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 180px at 15% 0%, rgba(125,211,252,.28), transparent 60%),
+                  radial-gradient(520px 180px at 80% 20%, rgba(167,243,208,.20), transparent 60%),
+                  radial-gradient(700px 240px at 50% 100%, rgba(196,181,253,.20), transparent 65%);
+      opacity: .85;
+      pointer-events:none;
+    }
+    .hero-card > * { position: relative; }
+    h1 { margin: 0; font-size: clamp(26px, 3.6vw, 40px); letter-spacing: -.4px; }
+    .subtitle { margin-top: 8px; color: var(--muted); font-size: 15px; }
+    .meta-row {
+      margin-top: 14px;
+      display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+      color: var(--faint); font-size: 12px;
+    }
+    .tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (min-width: 920px) {
+      .grid { grid-template-columns: 1.05fr .95fr; align-items: start; }
+    }
+    .card {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      box-shadow: 0 16px 40px rgba(0,0,0,.18);
+      padding: 18px 18px 16px;
+    }
+    .card h2 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      letter-spacing: .1px;
+    }
+    .card p { margin: 0; color: var(--muted); }
+    .kpi {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px; margin-top: 12px;
+    }
+    .kpi .k {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      border-radius: 14px;
+      padding: 10px 10px;
+      min-height: 64px;
+    }
+    .k .lbl { color: var(--faint); font-size: 11px; }
+    .k .val { margin-top: 3px; font-weight: 650; font-size: 13px; color: var(--text); }
+    .dialogue {
+      margin-top: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 55px rgba(0,0,0,.22);
+      overflow: hidden;
+    }
+    .dialogue .head {
+      padding: 14px 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .dialogue .head .title {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .2px;
+    }
+    .legend {
+      display:flex; gap:10px; align-items:center; flex-wrap: wrap;
+      color: var(--faint); font-size: 12px;
+    }
+    .dot2 { width: 10px; height: 10px; border-radius: 999px; display:inline-block; }
+    .dot2.d { background: var(--d); }
+    .dot2.m { background: var(--m); }
+    .lines { padding: 14px 12px 6px; }
+    .line {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 10px;
+      padding: 10px 8px;
+      border-radius: 14px;
+      transition: background .15s ease;
+    }
+    .line:hover { background: rgba(255,255,255,.04); }
+    .meta { padding-top: 2px; }
+    .badge {
+      display: inline-block;
+      font-weight: 750;
+      letter-spacing: .2px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      margin-bottom: 6px;
+    }
+    .who { display:block; font-size: 12px; color: var(--faint); }
+    .bubble {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      border-radius: 16px;
+      padding: 11px 12px;
+      color: var(--text);
+      position: relative;
+      overflow-wrap: anywhere;
+    }
+    .speaker-d .badge { border-color: rgba(125,211,252,.35); }
+    .speaker-d .bubble { background: linear-gradient(180deg, rgba(125,211,252,.10), rgba(255,255,255,.04)); }
+    .speaker-m .badge { border-color: rgba(167,243,208,.35); }
+    .speaker-m .bubble { background: linear-gradient(180deg, rgba(167,243,208,.10), rgba(255,255,255,.04)); }
+    .hidden { display:none !important; }
+    mark {
+      background: rgba(196,181,253,.35);
+      color: var(--text);
+      padding: 0 .2em;
+      border-radius: .35em;
+    }
+    .footer {
+      margin-top: 18px;
+      color: var(--faint);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media print {
+      .topbar, .actions, .btn, .pill { display:none !important; }
+      body { background: #fff; color: #111827; }
+      .hero-card, .card, .dialogue { box-shadow:none; background: #fff; }
+      .bubble { background:#fff !important; }
+      .wrap { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand"><span class="dot"></span><span>Support participants</span></div>
+      <div class="actions">
+        <label class="pill" title="Recherche dans le dialogue">
+          🔎 <input id="q" type="search" placeholder="Rechercher un mot, une objection, une étape…" />
+        </label>
+        <button class="btn" id="toggleD" aria-pressed="true">🧑‍💼 Délégué</button>
+        <button class="btn" id="toggleM" aria-pressed="true">🩺 Médecin</button>
+        <button class="btn" id="reset">↺ Réinitialiser</button>
+        <button class="btn" onclick="window.print()">🖨️ Imprimer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-card">
+        <h1>Le cas FOAMTECH</h1>
+        <div class="subtitle">Visite d’un délégué médical à un médecin généraliste</div>
+        <div class="meta-row">
+          <span class="tag">Format : sketch de vente</span>
+          <span class="tag">Usage : animation / entraînement</span>
+          <span class="tag">MàJ : 13 janvier 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card" id="contexte">
+        <h2>Contexte de la visite</h2>
+        <p>Le délégué médical, Julien DELCAMP, rend visite au Dr LEMOINE, généraliste. Il a ciblé ce MG car dans son CRM il a vu que son potentiel est intéressant et qu’il ne l’a pas vu depuis 2 ans. Il va donc lui présenter une nouvelle gamme de pansements mousse à technologie micro-adaptative spécialement conçue pour les plaies complexes (ulcères, escarres...). Le rendez-vous a été difficile à obtenir : au téléphone, le médecin a dit « sauf si vous avez un produit vraiment efficace pour les plaies diabétiques, je n’ai pas de temps à perdre ». Julien a avec lui des échantillons et des études cliniques récentes, il a chargé son Ipad et l’a ouvert sur la présentation du nouveau produit, FOAMTECH Adapt.</p>
+      </div>
+
+      <div class="card" id="clefs">
+        <h2>Repères rapides</h2>
+        <p>Un coup d’œil avant lecture, pour cadrer l’échange.</p>
+        <div class="kpi">
+          <div class="k"><div class="lbl">Cible</div><div class="val">MG à potentiel, non visité depuis 2 ans</div></div>
+          <div class="k"><div class="lbl">Accroche</div><div class="val">« produit vraiment efficace » sur plaies diabétiques</div></div>
+          <div class="k"><div class="lbl">Offre</div><div class="val">FOAMTECH Adapt • technologie micro-adaptative</div></div>
+          <div class="k"><div class="lbl">Preuves</div><div class="val">Études cliniques + retours centres spécialisés</div></div>
+          <div class="k"><div class="lbl">Objection</div><div class="val">Prix + protocole IDE + contraintes budget</div></div>
+          <div class="k"><div class="lbl">Prochaine étape</div><div class="val">Test sur 1 à 3 cas • point à J+10</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dialogue" id="dialogue">
+      <div class="head">
+        <div class="title">Dialogue</div>
+        <div class="legend"><span class="dot2 d"></span> Délégué <span class="dot2 m"></span> Médecin</div>
+      </div>
+      <div class="lines" id="lines">
+        
+    <div class="line speaker-d" data-speaker="D" data-turn="1">
+      <div class="meta">
+        <span class="badge">D1</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Bonjour Docteur LEMOINE, Julien DELCAMP, de chez FOAMTECH. Merci de me recevoir !
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="2">
+      <div class="meta">
+        <span class="badge">M2</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        Bonjour… oui, entrez, j’ai quelques minutes.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="3">
+      <div class="meta">
+        <span class="badge">D3</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Merci, je sais que votre agenda est bien chargé, surtout avec les patients chroniques qui demandent un vrai suivi au quotidien.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="4">
+      <div class="meta">
+        <span class="badge">M4</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        Vous ne croyez pas si bien dire… J’ai une dizaine de diabétiques avec des plaies qui ne cicatrisent pas. C’est une vraie galère.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="5">
+      <div class="meta">
+        <span class="badge">D5</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Justement, c’est pour cela que je tenais à vous revoir. On a développé chez FOAMTECH un pansement innovant pensé pour ces cas complexes, notamment les ulcères chez les patients diabétiques. Est-ce que je peux vous présenter cela en 5 minutes ?
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="6">
+      <div class="meta">
+        <span class="badge">M6</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        Allez-y, j’ai 10 minutes avant mon prochain patient.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="7">
+      <div class="meta">
+        <span class="badge">D7</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Parfait, merci Dr ! FOAMTECH a toujours investi en R&amp;D pour proposer des solutions plus efficaces. (Julien présente son Ipad au Dr LEMOINE) Cette nouvelle gamme, la FOAMTECH Adapt, repose sur une technologie micro-adaptative, inspirée des polymères bioactifs. Résultat : le pansement épouse parfaitement les reliefs de la plaie et régule l&#x27;humidité en continu.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="8">
+      <div class="meta">
+        <span class="badge">M8</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        Vous avez un échantillon que je vois à quoi cela ressemble ?
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="9">
+      <div class="meta">
+        <span class="badge">D9</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Bien sûr. Tenez, vous pouvez le manipuler. Vous voyez cette souplesse ? Et cette couche interne : elle absorbe l’exsudat tout en maintenant un environnement humide optimal.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="10">
+      <div class="meta">
+        <span class="badge">M10</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        La texture est pas mal. On dirait que ça tient bien !
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="11">
+      <div class="meta">
+        <span class="badge">D11</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Exactement. Et surtout, des études cliniques menées sur 120 patients diabétiques ont montré une réduction du temps de cicatrisation de 30% par rapport aux pansements qui existent aujourd’hui sur le marché. Deux centres de soin des plaies à Bordeaux et Nancy l’utilisent déjà régulièrement et sont extrêmement satisfaits des résultats.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="12">
+      <div class="meta">
+        <span class="badge">M12</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        Vous me dites que ça guérit mieux, mais ça doit coûter plus cher, non ?
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="13">
+      <div class="meta">
+        <span class="badge">D13</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Oui, environ 15% plus cher qu’un pansement mousse standard. Mais les retours montrent qu’on réduit le nombre de changes, donc le coût total du soin baisse sur le long terme.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="14">
+      <div class="meta">
+        <span class="badge">M14</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        Là je suis sceptique ! Nous sommes contraints avec des budgets serrés, et en plus les infirmières libérales râlent quand un pansement sort du protocole habituel.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="15">
+      <div class="meta">
+        <span class="badge">D15</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Je comprends. Mais ici on parle d’un produit qui peut éviter une évolution vers des infections graves ou des hospitalisations, ce qui coûte bien plus cher au système et au patient, et est probablement une préoccupation des infirmières qui travaillent avec vous !
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="16">
+      <div class="meta">
+        <span class="badge">M16</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        Peut-être, mais moi je dois convaincre mes patients, mes IDE, et parfois en plus le pharmacien...
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="17">
+      <div class="meta">
+        <span class="badge">D17</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Et si on testait ensemble ? Un essai sur 2 ou 3 cas complexes, sans modifier votre pratique habituelle, juste pour vous permettre de voir et de mesurer l’efficacité réelle ?
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="18">
+      <div class="meta">
+        <span class="badge">M18</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        Oui … pourquoi pas …  J’ai justement une patiente avec un ulcère plantaire qui stagne depuis 3 mois. On pourrait essayer sur elle. Mais je dois prévenir l’infirmière.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="19">
+      <div class="meta">
+        <span class="badge">D19</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Bien sûr. Je peux vous laisser un kit test avec 3 formats différents. Je vous laisse aussi une fiche résumé pour l’infirmière, et je peux même l’appeler si vous préférez.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="20">
+      <div class="meta">
+        <span class="badge">M20</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        D’accord. Mais si ça ne montre pas une vraie différence, je ne renouvellerai pas.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="21">
+      <div class="meta">
+        <span class="badge">D21</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        C’est tout à fait légitime. Je vous propose de faire un point dans 10 jours, après les premiers retours. Je vais également vous envoyer les données cliniques complètes par mail, votre adresse est toujours dlemoine@orange.fr ?
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="22">
+      <div class="meta">
+        <span class="badge">M22</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        D’accord. Laissez-moi le kit et la fiche. On verra bien.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="23">
+      <div class="meta">
+        <span class="badge">D23</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Parfait. Voici le kit, je vous note tout ça par mail, et je vous appelle la semaine prochaine.
+      </div>
+    </div>
+    
+
+    <div class="line speaker-m" data-speaker="M" data-turn="24">
+      <div class="meta">
+        <span class="badge">M24</span>
+        <span class="who">Médecin</span>
+      </div>
+      <div class="bubble">
+        Très bien. Merci, au revoir !
+      </div>
+    </div>
+    
+
+    <div class="line speaker-d" data-speaker="D" data-turn="25">
+      <div class="meta">
+        <span class="badge">D25</span>
+        <span class="who">Délégué</span>
+      </div>
+      <div class="bubble">
+        Merci à vous, Docteur LEMOINE,  À bientôt.
+      </div>
+    </div>
+    
+      </div>
+    </section>
+
+    <section class="grid" style="margin-top:16px;">
+      <div class="card" id="analyse">
+        <h2>Analyse de la visite (point de vue du délégué)</h2>
+        <p>Julien est plutôt satisfait de sa visite. Il n’avait pas vu ce généraliste depuis 2 ans et il va enfin démarrer quelque chose avec lui grâce à ce nouveau produit FOAMTECH Adapt. Toutefois, ce n’est pas gagné, faire prescrire un produit 15% + cher c’est bien, mais il faudrait vraiment que FOAMTECH baisse le prix pour garantir une utilisation récurrente, d’ailleurs Julien n’arrête pas de le dire au chef de produit !</p>
+      </div>
+
+      <div class="card" id="exploitation">
+        <h2>Pistes d’exploitation en session</h2>
+        <p>
+          • Où se situe l’accroche, et pourquoi elle fonctionne (ou pas) ?<br>
+          • Quelles preuves sont utilisées (cliniques / terrain) et à quel moment ?<br>
+          • Comment l’objection prix est traitée : valeur totale, risques évités, test limité.<br>
+          • Qu’auriez-vous ajouté pour embarquer IDE / pharmacien dès le 1er essai ?<br>
+          • Quel « next step » est le plus solide : point à J+10, kit test, envoi des données.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      Version web autonome (1 fichier). Astuce : tu peux l’héberger sur un drive/Notion/SharePoint, ou l’envoyer en pièce jointe.
+    </div>
+  </div>
+
+  <script>
+    const q = document.getElementById('q');
+    const lines = [...document.querySelectorAll('.line')];
+    const btnD = document.getElementById('toggleD');
+    const btnM = document.getElementById('toggleM');
+    const reset = document.getElementById('reset');
+
+    let showD = true, showM = true;
+
+    function clearMarks(el) {
+      el.querySelectorAll('mark').forEach(m => {
+        const t = document.createTextNode(m.textContent);
+        m.replaceWith(t);
+      });
+    }
+
+    function markText(node, needle) {
+      const bubble = node.querySelector('.bubble');
+      clearMarks(bubble);
+      if (!needle) return;
+
+      const text = bubble.textContent;
+      const idx = text.toLowerCase().indexOf(needle.toLowerCase());
+      if (idx === -1) return;
+
+      const before = document.createTextNode(text.slice(0, idx));
+      const mark = document.createElement('mark');
+      mark.textContent = text.slice(idx, idx + needle.length);
+      const after = document.createTextNode(text.slice(idx + needle.length));
+      bubble.textContent = '';
+      bubble.appendChild(before);
+      bubble.appendChild(mark);
+      bubble.appendChild(after);
+    }
+
+    function applyFilters() {
+      const needle = (q.value || '').trim();
+      lines.forEach(line => {
+        const sp = line.dataset.speaker;
+        const okSpeaker = (sp === 'D' ? showD : sp === 'M' ? showM : true);
+        const okText = !needle || line.textContent.toLowerCase().includes(needle.toLowerCase());
+        line.classList.toggle('hidden', !(okSpeaker && okText));
+        if (!line.classList.contains('hidden')) markText(line, needle);
+      });
+    }
+
+    btnD.addEventListener('click', () => {
+      showD = !showD;
+      btnD.classList.toggle('active', showD);
+      btnD.setAttribute('aria-pressed', showD);
+      applyFilters();
+    });
+    btnM.addEventListener('click', () => {
+      showM = !showM;
+      btnM.classList.toggle('active', showM);
+      btnM.setAttribute('aria-pressed', showM);
+      applyFilters();
+    });
+
+    q.addEventListener('input', applyFilters);
+
+    reset.addEventListener('click', () => {
+      q.value = '';
+      showD = true; showM = true;
+      btnD.classList.add('active'); btnM.classList.add('active');
+      btnD.setAttribute('aria-pressed', true);
+      btnM.setAttribute('aria-pressed', true);
+      lines.forEach(line => line.classList.remove('hidden'));
+      lines.forEach(line => clearMarks(line.querySelector('.bubble')));
+    });
+
+    btnD.classList.add('active');
+    btnM.classList.add('active');
+  </script>
+</body>
+</html>
